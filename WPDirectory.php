@@ -17,3 +17,64 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
       
+// Register the Custom Music Review Post Type
+ 
+function register_cpt_wpdirectory() {
+ 
+    $labels = array(
+        'name' => _x( 'WP Directory', 'wpdirectory' ),
+        'singular_name' => _x( 'WP Directory', 'wpdirectory' ),
+        'add_new' => _x( 'Add New', 'wpdirectory' ),
+        'add_new_item' => _x( 'Add New Directory Item', 'wpdirectory' ),
+        'edit_item' => _x( 'Edit Directory Item', 'wpdirectory' ),
+        'new_item' => _x( 'New Directory Item', 'wpdirectory' ),
+        'view_item' => _x( 'View Directory Item', 'wpdirectory' ),
+        'search_items' => _x( 'Search Directory Item', 'wpdirectory' ),
+        'not_found' => _x( 'No directory items found', 'wpdirectory' ),
+        'not_found_in_trash' => _x( 'No directory items found in Trash', 'wpdirectory' ),
+        'parent_item_colon' => _x( 'Parent Directory Item', 'wpdirectory' ),
+        'menu_name' => _x( 'WP Directory', 'wpdirectory' ),
+    );
+ 
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'description' => 'Directory items filter',
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes' ),
+        'taxonomies' => array( 'categories' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-format-audio',
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => true,
+        'capability_type' => 'post'
+    );
+ 
+    register_post_type( 'wpdirectory', $args );
+}
+ 
+add_action( 'init', 'register_cpt_wpdirectory' );
+
+function categories_taxonomy() {
+    register_taxonomy(
+        'categories',
+        'wpdirectory',
+        array(
+            'hierarchical' => true,
+            'label' => 'Categories',
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'category',
+                'with_front' => false
+            )
+        )
+    );
+}
+add_action( 'init', 'categories_taxonomy');
