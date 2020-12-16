@@ -78,3 +78,21 @@ function categories_taxonomy() {
     );
 }
 add_action( 'init', 'categories_taxonomy');
+
+function create_wpdirectory_pages()
+  {
+   //post status and options
+    $post = array(
+          'comment_status' => 'closed',
+          'ping_status' =>  'closed' ,
+          'post_date' => date('Y-m-d H:i:s'),
+          'post_name' => 'wpdirectory',
+          'post_status' => 'publish' ,
+          'post_title' => 'Yritykset',
+          'post_type' => 'page',
+    );
+    //insert page and save the id
+    $newvalue = wp_insert_post( $post, false );
+    //save the id in the database
+    update_option( 'wpdpage', $newvalue );
+  }
