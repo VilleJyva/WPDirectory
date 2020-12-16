@@ -47,8 +47,8 @@ if(class_exists('WPListingPlugin')){
     $wplistingPlugin = new WPListingPlugin('WP Listing initialized');
 }
 
-register_activation_hook(__FILE__,array($wplistingPlugin, activate) );
-register_deactivation_hook(__FILE__,array($wplistingPlugin, deactivate) );
+register_activation_hook(__FILE__,array($wplistingPlugin, 'activate') );
+register_deactivation_hook(__FILE__,array($wplistingPlugin, 'deactivate') );
 
 /* 
 function register_cpt_wpdirectory() {
