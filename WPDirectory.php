@@ -1,8 +1,13 @@
-<?php /**
- * Plugin Name:       WPDirectory
+<?php
+/** 
+ * @package WPDirectory
+ */
+
+/**
+ * Plugin Name:       WPListing
  * Plugin URI:        https://github.com/VilleJyva/WPDirectory.git
  * Description:       Simple WP Directory Plugin
- * Version:           0.0.1
+ * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Ville Siren
@@ -18,14 +23,27 @@ if ( ! defined( 'WPINC' ) ) {
 }
       
 // Register the Custom Music Review Post Type
- 
+
+class WPListingPlugin{
+
+    function __construct($arg){
+        echo @arg;
+    } 
+
+
+}
+if(!class_exists('WPListingPlugin')){
+    $wplistingPlugin = new WPListingPlugin('WP Listing initialized');
+}
+
+/* 
 function register_cpt_wpdirectory() {
  
     $labels = array(
-        'name' => _x( 'WP Directory', 'wpdirectory' ),
-        'singular_name' => _x( 'WP Directory', 'wpdirectory' ),
+        'name' => _x( 'Listings', 'wpdirectory' ),
+        'singular_name' => _x( 'Listing', 'wpdirectory' ),
         'add_new' => _x( 'Add New', 'wpdirectory' ),
-        'add_new_item' => _x( 'Add New Directory Item', 'wpdirectory' ),
+        'add_new_item' => _x( 'Add New Listing', 'wpdirectory' ),
         'edit_item' => _x( 'Edit Directory Item', 'wpdirectory' ),
         'new_item' => _x( 'New Directory Item', 'wpdirectory' ),
         'view_item' => _x( 'View Directory Item', 'wpdirectory' ),
@@ -98,4 +116,4 @@ function create_wpdirectory_pages()
   }
 
   // // Activates function if plugin is activated
-register_activation_hook( __FILE__, 'create_wpdirectory_pages');
+register_activation_hook( __FILE__, 'create_wpdirectory_pages');*/
