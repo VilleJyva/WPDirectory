@@ -96,3 +96,6 @@ function create_wpdirectory_pages()
     //save the id in the database
     update_option( 'wpdpage', $newvalue );
   }
+
+  // // Activates function if plugin is activated
+register_activation_hook( __FILE__, 'create_wpdirectory_pages');
