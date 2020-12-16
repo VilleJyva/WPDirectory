@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/example/public_html/customers/kotisivut/wp-content/plugins/WPDirectory
+    - /bin/cp README.md $DEPLOYPATH
