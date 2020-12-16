@@ -27,14 +27,27 @@ if ( ! defined( 'WPINC' ) ) {
 class WPListingPlugin{
 
     function __construct($arg){
-        echo @arg;
+        echo $arg;
     } 
 
+    function activate(){
+        echo "activated";
+    }
+
+    function deactivate(){
+
+    }
+
+    function uninstall(){
+
+    }
 
 }
 if(class_exists('WPListingPlugin')){
     $wplistingPlugin = new WPListingPlugin('WP Listing initialized');
 }
+
+register_activation_hook(__FILE__,array($wplistingPlugin, activate) );
 
 /* 
 function register_cpt_wpdirectory() {
