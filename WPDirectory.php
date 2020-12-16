@@ -32,7 +32,7 @@ class WPListingPlugin{
 
 
 }
-if(!class_exists('WPListingPlugin')){
+if(class_exists('WPListingPlugin')){
     $wplistingPlugin = new WPListingPlugin('WP Listing initialized');
 }
 
